@@ -1,6 +1,7 @@
 <template>
   <transition name="modal">
-    <div v-if="showModal" class="modal-mask">
+    <div v-if="showModal" tabindex="-1" class="modal-mask"
+         @keyup.esc="close(false)" @keyup.enter="close(true)">
       <div class="modal-dialog">
         <div class="modal-content">
 
@@ -20,6 +21,7 @@
             <button class="btn btn-default" @click="close(true)">OK</button>
             <button class="btn btn-default" @click="close(false)">Cancel</button>
           </div>
+
         </div>
       </div>
     </div>
@@ -37,6 +39,7 @@
     methods: {
       open () {
         this.showModal = true
+        this.$nextTick(() => this.$el.focus())
       },
       close (result) {
         this.showModal = false
