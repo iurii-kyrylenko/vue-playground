@@ -1,6 +1,6 @@
 <template>
   <transition name="modal">
-    <div class="modal-mask">
+    <div v-if="showModal" class="modal-mask">
       <div class="modal-dialog">
         <div class="modal-content">
 
@@ -29,8 +29,19 @@
 <script>
   export default {
     name: 'modal',
+    data () {
+      return {
+        showModal: false
+      }
+    },
     methods: {
-      close (result) { this.$emit('close', result) }
+      open () {
+        this.showModal = true
+      },
+      close (result) {
+        this.showModal = false
+        this.$emit('close', result)
+      }
     }
   }
 </script>

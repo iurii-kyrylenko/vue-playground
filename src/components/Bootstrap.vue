@@ -12,12 +12,12 @@
 
     <div>
       <button type="button" class="btn btn-default" @click="alert='TEST ALERT'">Alert</button>
-      <button type="button" class="btn btn-default" @click="showModal = true">Modal</button>
+      <button type="button" class="btn btn-default" @click="onTestModal">Modal</button>
     </div>
 
-    <modal v-if="showModal" @close="showModal = false">
-      <div slot="header">Header</div>
-      <div slot="body">Body</div>
+    <modal ref="modal" @close="onCloseModal">
+      <div slot="header">{{ modalData.name }}</div>
+      <div slot="body"><div class="well">{{ modalData.surname }}</div></div>
     </modal>
 
   </div>
@@ -31,9 +31,18 @@
     data () {
       return {
         alert: null,
-        showModal: false
+        modalData: {}
       }
     },
-    components: { Modal }
+    components: { Modal },
+    methods: {
+      onTestModal () {
+        this.modalData = { name: 'Iurii', surname: 'Kyrylenko' }
+        this.$refs.modal.open()
+      },
+      onCloseModal (result) {
+        console.log(result)
+      }
+    }
   }
 </script>
