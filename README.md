@@ -1,6 +1,6 @@
 # vue-playground
 
-> My Vue.js playground
+> My Vue.js playground: Working on component and Vue.js concepts 
 
 ## Build Setup
 
