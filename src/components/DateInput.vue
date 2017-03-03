@@ -18,7 +18,7 @@
           'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
           'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
         ]
-        if (!this.value) return null
+        if (!this.value) return 'Invalid Date'
         const year = this.value.getFullYear()
         const month = this.value.getMonth()
         const day = this.value.getDate()
