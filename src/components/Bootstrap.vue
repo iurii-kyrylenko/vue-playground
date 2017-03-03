@@ -3,13 +3,16 @@
 
     <notifier></notifier>
 
-    <p>
-      <date-input label-id="completed" title="Date:" v-model="date"></date-input>
-    </p>
-
     <div>
       <button type="button" class="btn btn-default" @click="onModal">Modal</button>
       <button type="button" class="btn btn-default" @click="onNotify">Notify</button>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-4">
+        <br/>
+        <date-input label-id="completed" title="Date:" v-model="date"></date-input>
+      </div>
     </div>
 
     <modal ref="modal" @close="onCloseModal">
