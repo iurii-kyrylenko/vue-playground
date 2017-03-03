@@ -30,7 +30,6 @@
 
 <script>
   export default {
-    name: 'modal',
     data () {
       return {
         showModal: false

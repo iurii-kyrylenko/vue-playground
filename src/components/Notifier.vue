@@ -11,7 +11,6 @@
   import { mapGetters, mapMutations } from 'vuex'
 
   export default {
-    name: 'notifier',
     computed: {
       ...mapGetters('notification', ['message', 'alertClass'])
     },

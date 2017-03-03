@@ -22,7 +22,6 @@
   import { mapMutations } from 'vuex'
 
   export default {
-    name: 'bootstrap',
     data () {
       return {
         modalData: {}
