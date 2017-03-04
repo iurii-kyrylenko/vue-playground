@@ -1,17 +1,17 @@
 <template>
   <div>
-    <label :for="labelId">
-        {{ title }}
-        <span class="label label-default">{{ formatDate }}</span>
-    </label>
-    <input :id="labelId" ref="dateInput" @input="updateDate()"
-           placeholder="Free date format" class="form-control">
+    <slot></slot>
+    <span class="label" :class="{ 'label-success': value, 'label-danger': !value }">
+      {{ formatDate }}
+    </span>
+    <input :id="id" @input="updateDate($event.target.value)"
+           placeholder="Enter date in free format..." class="form-control">
   </div>
 </template>
 
 <script>
   export default {
-    props: ['title', 'value', 'labelId'],
+    props: ['value', 'id'],
     computed: {
       formatDate () {
         const months = [
@@ -26,9 +26,8 @@
       }
     },
     methods: {
-      updateDate () {
-        const v = this.$refs.dateInput.value
-        const test = new Date(v)
+      updateDate (value) {
+        const test = new Date(value)
         const date = test.toJSON() ? test : null
         this.$emit('input', date)
       }

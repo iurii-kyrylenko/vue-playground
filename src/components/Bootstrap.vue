@@ -3,15 +3,40 @@
 
     <notifier></notifier>
 
-    <div>
-      <button type="button" class="btn btn-default" @click="onModal">Modal</button>
-      <button type="button" class="btn btn-default" @click="onNotify">Notify</button>
-    </div>
-
     <div class="row">
       <div class="col-sm-4">
-        <br/>
-        <date-input label-id="completed" title="Date:" v-model="date"></date-input>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="panel-title">Modal component</div>
+          </div>
+          <div class="panel-body">
+            <button type="button" class="btn btn-default" @click="onModal">Modal</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="panel-title">Notifier component</div>
+          </div>
+          <div class="panel-body">
+            <button type="button" class="btn btn-default" @click="onNotify">Notify</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-sm-4">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <div class="panel-title">DateInput component</div>
+          </div>
+          <div class="panel-body">
+            <date-input id="completed" v-model="date">
+              <label for="completed">Completed on:&nbsp;</label>
+            </date-input>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -33,7 +58,7 @@
     data () {
       return {
         modalData: {},
-        date: null
+        date: new Date()
       }
     },
     components: { Modal, Notifier, DateInput },

@@ -1,16 +1,16 @@
 <template>
   <div id="app">
     <div class="head">
-      <h3>Vue.js Playground</h3>
+      <h4>Vue.js Playground</h4>
       <img src="./assets/logo.png">
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
+      <div class="container">
+        <nav class="navbar navbar-default">
           <ul class="nav navbar-nav">
             <li><router-link to="/">Home</router-link></li>
-            <li><router-link to="/bootstrap">Bootstrap</router-link></li>
+            <li><router-link to="/bootstrap">Components</router-link></li>
           </ul>
-        </div>
-      </nav>
+        </nav>
+      </div>
     </div>
     <router-view></router-view>
   </div>
@@ -22,7 +22,6 @@
 
 <style>
 .head {
-  margin: 20px;
   text-align: center;
 }
 </style>
