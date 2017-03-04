@@ -8,7 +8,7 @@
           <ul class="nav navbar-nav">
             <li><router-link to="/">Home</router-link></li>
             <li><router-link to="/bootstrap">Components</router-link></li>
-            <li><router-link to="/my-form">Forms</router-link></li>
+            <li><router-link to="/form-validation">Form Validation</router-link></li>
           </ul>
         </nav>
       </div>

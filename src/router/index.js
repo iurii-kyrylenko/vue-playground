@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import Bootstrap from '@/components/Bootstrap'
-import MyForm from '@/components/MyForm'
+import FormValidation from '@/components/FormValidation'
 
 Vue.use(Router)
 
@@ -19,9 +19,9 @@ export default new Router({
       component: Bootstrap
     },
     {
-      path: '/my-form',
-      name: 'MyForm',
-      component: MyForm
+      path: '/form-validation',
+      name: 'FormValidation',
+      component: FormValidation
     }
   ]
 })
