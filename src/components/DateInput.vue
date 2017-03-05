@@ -1,7 +1,7 @@
 <template>
   <div>
     <slot></slot>
-    <span class="label" :class="{ 'label-success': value, 'label-warning': !value }">
+    <span class="label" :class="{ 'label-my-success': value, 'label-my-error': !value }">
       {{ formatDate1 }}
     </span>
     <input ref="textInput" :id="id" @input="updateDate($event.target.value)"
@@ -44,3 +44,16 @@
     }
   }
 </script>
+
+<style>
+  .label {
+    padding-top: .3em !important;
+    border-radius: .4em !important;
+  }
+  .label-my-success {
+    background-color: #008000;
+  }
+  .label-my-error {
+    background-color: #a94442;
+  }
+</style>

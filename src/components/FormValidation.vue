@@ -21,7 +21,7 @@
               <date-input id="completed"
                      v-model="completed"
                      @input="$v.completed.$touch()">
-                <label class="control-label" for="completed">Completed on:&nbsp;</label>
+                <label class="control-label" for="completed">Completed on&nbsp;</label>
               </date-input>
             </div>
 

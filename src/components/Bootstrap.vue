@@ -34,12 +34,12 @@
           <div class="panel-body">
             <p>
               <date-input id="completed" v-model="date">
-                <label for="completed">Completed on:&nbsp;</label>
+                <label for="completed">Completed on&nbsp;</label>
               </date-input>
             </p>
             <p>
               <date-input id="completed2" v-model="date2">
-                <label for="completed2">Completed on:&nbsp;</label>
+                <label for="completed2">Completed on&nbsp;</label>
               </date-input>
             </p>
           </div>
