@@ -16,6 +16,15 @@
                      class="form-control" type="text" placeholder="Enter title...">
               <p class="text-danger" v-show="$v.title.$error">{{ vmsgTitle }}</p>
             </div>
+
+            <div class="form-group" :class="{ 'has-error': $v.completed.$error }">
+              <date-input id="completed"
+                     v-model="completed"
+                     @input="$v.completed.$touch()">
+                <label class="control-label" for="completed">Completed on:&nbsp;</label>
+              </date-input>
+            </div>
+
             <button type="submit" class="btn btn-default">Submit</button>
           </form>
       </div>
@@ -27,18 +36,24 @@
 <script>
   import { validationMixin } from 'vuelidate'
   import { required, minLength } from 'vuelidate/lib/validators'
+  import DateInput from './DateInput'
 
   export default {
     mixins: [validationMixin],
+    components: { DateInput },
     data () {
       return {
-        title: ''
+        title: '',
+        completed: null
       }
     },
     validations: {
       title: {
         required,
         minLength: minLength(3)
+      },
+      completed: {
+        required
       }
     },
     computed: {
@@ -54,7 +69,7 @@
         this.submitForm()
       },
       submitForm () {
-        console.log('Submitted data:', this.title)
+        console.log('Submitted data:', { ...this.$data })
       }
     }
   }

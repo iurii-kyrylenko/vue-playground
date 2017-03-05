@@ -1,10 +1,10 @@
 <template>
   <div>
     <slot></slot>
-    <span class="label" :class="{ 'label-success': value, 'label-danger': !value }">
-      {{ formatDate }}
+    <span class="label" :class="{ 'label-success': value, 'label-warning': !value }">
+      {{ formatDate1 }}
     </span>
-    <input :id="id" @input="updateDate($event.target.value)"
+    <input ref="textInput" :id="id" @input="updateDate($event.target.value)"
            placeholder="Enter date in free format..." class="form-control">
   </div>
 </template>
@@ -18,12 +18,22 @@
           'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
           'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
         ]
-        if (!this.value) return 'Invalid Date'
         const year = this.value.getFullYear()
         const month = this.value.getMonth()
         const day = this.value.getDate()
         return `${months[month]} ${day}, ${year}`
+      },
+      formatDate1 () {
+        if (!this.value) return 'Invalid Date'
+        return this.formatDate
+      },
+      formatDate2 () {
+        if (!this.value) return null
+        return this.formatDate
       }
+    },
+    mounted () {
+      this.$refs.textInput.value = this.formatDate2
     },
     methods: {
       updateDate (value) {

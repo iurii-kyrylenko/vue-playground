@@ -32,9 +32,16 @@
             <div class="panel-title">DateInput component</div>
           </div>
           <div class="panel-body">
-            <date-input id="completed" v-model="date">
-              <label for="completed">Completed on:&nbsp;</label>
-            </date-input>
+            <p>
+              <date-input id="completed" v-model="date">
+                <label for="completed">Completed on:&nbsp;</label>
+              </date-input>
+            </p>
+            <p>
+              <date-input id="completed2" v-model="date2">
+                <label for="completed2">Completed on:&nbsp;</label>
+              </date-input>
+            </p>
           </div>
         </div>
       </div>
@@ -58,7 +65,8 @@
     data () {
       return {
         modalData: {},
-        date: new Date()
+        date: new Date(),
+        date2: null
       }
     },
     components: { Modal, Notifier, DateInput },
