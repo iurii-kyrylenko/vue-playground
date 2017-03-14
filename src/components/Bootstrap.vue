@@ -10,7 +10,10 @@
             <div class="panel-title">Modal component</div>
           </div>
           <div class="panel-body">
-            <button type="button" class="btn btn-default" @click="onModal">Modal</button>
+            <button type="button" class="btn btn-default" @click="onModal1">Modal 1</button>
+          </div>
+          <div class="panel-body">
+            <button type="button" class="btn btn-default" @click="onModal2">Modal 2</button>
           </div>
         </div>
       </div>
@@ -47,9 +50,14 @@
       </div>
     </div>
 
-    <modal ref="modal" @close="onCloseModal">
-      <div slot="header">{{ modalData.name }}</div>
-      <div slot="body"><div class="well">{{ modalData.surname }}</div></div>
+    <modal ref="modal1" @close="onCloseModal1">
+      <div slot="header">{{ modalData1.name }}</div>
+      <div slot="body"><div class="well">{{ modalData1.surname }}</div></div>
+    </modal>
+
+    <modal ref="modal2" @close="onCloseModal2">
+      <div slot="header">{{ modalData2.author }}</div>
+      <div slot="body"><div class="well">{{ modalData2.title }}</div></div>
     </modal>
 
   </div>
@@ -64,7 +72,8 @@
   export default {
     data () {
       return {
-        modalData: {},
+        modalData1: {},
+        modalData2: {},
         date: new Date(),
         date2: null
       }
@@ -72,11 +81,18 @@
     components: { Modal, Notifier, DateInput },
     methods: {
       ...mapMutations('notification', ['notify']),
-      onModal () {
-        this.modalData = { name: 'Iurii', surname: 'Kyrylenko' }
-        this.$refs.modal.open()
+      onModal1 () {
+        this.modalData1 = { name: 'Iurii', surname: 'Kyrylenko' }
+        this.$refs.modal1.open()
       },
-      onCloseModal (result) {
+      onModal2 () {
+        this.modalData2 = { author: 'Stephen King', title: 'Dark Tower' }
+        this.$refs.modal2.open()
+      },
+      onCloseModal1 (result) {
+        console.log(result)
+      },
+      onCloseModal2 (result) {
         console.log(result)
       },
       onNotify () {
