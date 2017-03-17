@@ -36,6 +36,13 @@ export default new Router({
         name: 'Feature2',
         template: '<div class="container"><h2>Feature-2</h2></div>'
       }
+    },
+    {
+      path: '/cool-page',
+      component: {
+        name: 'CoolPage',
+        template: '<div class="container"><h2>Cool Page</h2></div>'
+      }
     }
   ]
 })
