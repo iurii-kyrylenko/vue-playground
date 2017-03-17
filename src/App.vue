@@ -11,6 +11,9 @@
             <router-link tag="li" active-class="active" to="/bootstrap"><a>Components</a></router-link>
             <router-link tag="li" active-class="active" to="/form-validation"><a>Form Validation</a></router-link>
           </ul>
+
+          <dropdown-menu></dropdown-menu>
+
         </div>
         </nav>
       </div>
@@ -20,11 +23,14 @@
 </template>
 
 <script>
-  export default {}
+  import DropdownMenu from '@/components/DropdownMenu'
+  export default {
+    components: { DropdownMenu }
+  }
 </script>
 
 <style>
-.head {
-  text-align: center;
-}
+  .head {
+    text-align: center;
+  }
 </style>

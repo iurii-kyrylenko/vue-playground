@@ -22,6 +22,20 @@ export default new Router({
       path: '/form-validation',
       name: 'FormValidation',
       component: FormValidation
+    },
+    {
+      path: '/feature1',
+      component: {
+        name: 'Feature1',
+        template: '<div class="container"><h2>Feature-1</h2></div>'
+      }
+    },
+    {
+      path: '/feature2',
+      component: {
+        name: 'Feature2',
+        template: '<div class="container"><h2>Feature-2</h2></div>'
+      }
     }
   ]
 })
