@@ -2,42 +2,35 @@
   <div>
     <slot></slot>
     <span class="label" :class="{ 'label-my-success': value, 'label-my-error': !value }">
-      {{ formatDate1 }}
+      {{ value | date }}
     </span>
-    <input ref="textInput" :id="id" @input="updateDate($event.target.value)"
+    <input v-once :value="value | date(null)" :id="id" @input="updateDate"
            placeholder="Enter date in free format..." class="form-control">
   </div>
 </template>
 
 <script>
   export default {
-    props: ['value', 'id'],
-    computed: {
-      formatDate () {
+    filters: {
+      date (date, error = 'Invalid date') {
+        if (!date) return error
+
         const months = [
           'Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun',
           'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'
         ]
-        const year = this.value.getFullYear()
-        const month = this.value.getMonth()
-        const day = this.value.getDate()
+
+        const year = date.getFullYear()
+        const month = date.getMonth()
+        const day = date.getDate()
+
         return `${months[month]} ${day}, ${year}`
-      },
-      formatDate1 () {
-        if (!this.value) return 'Invalid Date'
-        return this.formatDate
-      },
-      formatDate2 () {
-        if (!this.value) return null
-        return this.formatDate
       }
     },
-    mounted () {
-      this.$refs.textInput.value = this.formatDate2
-    },
+    props: ['value', 'id'],
     methods: {
-      updateDate (value) {
-        const test = new Date(value)
+      updateDate (event) {
+        const test = new Date(event.target.value)
         const date = test.toJSON() ? test : null
         this.$emit('input', date)
       }
@@ -45,7 +38,7 @@
   }
 </script>
 
-<style>
+<style scoped>
   .label {
     padding-top: .3em !important;
     border-radius: .4em !important;
