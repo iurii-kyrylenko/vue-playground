@@ -12,7 +12,7 @@
             <router-link tag="li" active-class="active" to="/form-validation"><a>Form Validation</a></router-link>
           </ul>
 
-          <dropdown-menu :content="menu1"></dropdown-menu>
+          <dropdown-menu v-once :content="menu1"></dropdown-menu>
 
         </div>
         </nav>

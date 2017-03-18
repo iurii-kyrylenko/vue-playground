@@ -1,14 +1,13 @@
 <template>
   <ul class="nav navbar-nav">
     <li :class="{  active: isGroupActive }">
-      <a href="#" @click.prevent="toggle">
+      <a ref="invoker" href="#" @click.prevent="isVisible = !isVisible">
         Dropdown Menu&nbsp;
         <span class="caret"></span>
       </a>
-      <ul :class="{ 'dropdown-menu': toggled, 'drop-hide': !toggled }">
+      <ul :class="[isVisible ? 'dropdown-menu' : 'drop-hide']">
         <router-link v-for="item in content"
                      v-bind:key="item.title"
-                     @click.native="toggle"
                      tag="li" active-class="active"
                      :to="item.path">
           <a>
@@ -23,17 +22,28 @@
 
 <script>
   export default {
+    methods: {
+      hide ({ target }) {
+        const invoker = this.$refs.invoker
+        if (invoker !== target && !invoker.contains(target)) {
+          this.isVisible = false
+        }
+      }
+    },
+    mounted () {
+      document.body.addEventListener('click', this.hide)
+    },
+    beforeDestroy () {
+      document.body.removeEventListener('click', this.hide)
+    },
     props: ['content'],
     computed: {
       isGroupActive () {
-        return this.$props.content.reduce((a, x) =>
-          a || this.$route.path.includes(x.path), false)
+        return this.$props.content.some(({ path }) =>
+          this.$route.path.includes(path))
       }
     },
-    methods: {
-      toggle () { this.toggled = !this.toggled }
-    },
-    data: () => ({ toggled: false })
+    data: () => ({ isVisible: false })
   }
 </script>
 
@@ -43,5 +53,8 @@
   }
   .drop-hide {
     display: none;
+  }
+  .dropdown-menu .active a, .dropdown-menu .active a:hover {
+    background-color: #a7a7a7;
   }
 </style>
