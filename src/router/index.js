@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import Bootstrap from '@/components/Bootstrap'
 import FormValidation from '@/components/FormValidation'
+import Fractals from '@/components/fractals'
 
 Vue.use(Router)
 
@@ -38,11 +39,9 @@ export default new Router({
       }
     },
     {
-      path: '/cool-page',
-      component: {
-        name: 'CoolPage',
-        template: '<div class="container"><h2>Cool Page</h2></div>'
-      }
+      path: '/fractals',
+      name: 'Fractals',
+      component: Fractals
     }
   ]
 })
