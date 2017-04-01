@@ -3,7 +3,6 @@ import iterations from './iterations'
 import getColor from './getColor'
 
 const draw = (el, params) => {
-  console.log('-- start of draw --')
   const context = el.getContext('2d')
 
   const width = params.width
@@ -26,7 +25,6 @@ const draw = (el, params) => {
     }
   }
   context.putImageData(imgData, 0, 0)
-  console.log('-- end of draw --')
 }
 
 export default {
