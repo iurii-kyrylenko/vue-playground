@@ -6,6 +6,12 @@ const colorPalette = (c, maxIter) => {
   return c.x * maxIter
 }
 
+// http://linas.org/art-gallery/escape/smooth.html
+const normalize = (mz, n) => {
+  const t = Math.log(mz) / 2
+  return n - Math.log(t) / Math.log(2)
+}
+
 const mandelbrot = (c, maxIter) => {
   let z = { x: 0, y: 0 }
   for (let i = 0; i < maxIter; i++) {
@@ -13,8 +19,9 @@ const mandelbrot = (c, maxIter) => {
       x: z.x * z.x - z.y * z.y + c.x,
       y: 2 * z.x * z.y + c.y
     }
-    if (zz.x * zz.x + zz.y * zz.y > 4) {
-      return i
+    const mz = zz.x * zz.x + zz.y * zz.y
+    if (mz > 4) {
+      return normalize(mz, i)
     }
     z = zz
   }

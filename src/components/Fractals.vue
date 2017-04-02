@@ -25,10 +25,10 @@
     data: () => ({
       params: {
         width: 340,
-        height: 540,
+        height: 340,
         x: -0.6,
         y: 0,
-        zoom: 100
+        zoom: 120
       }
     }),
     methods: {
