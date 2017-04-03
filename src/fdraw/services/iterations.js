@@ -8,6 +8,7 @@ const colorPalette = (c, maxIter) => {
 
 // http://linas.org/art-gallery/escape/smooth.html
 const normalize = (mz, n) => {
+  if (n === 0) return 0
   const t = Math.log(mz) / 2
   return n - Math.log(t) / Math.log(2)
 }

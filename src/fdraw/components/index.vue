@@ -1,12 +1,8 @@
 <template>
-  <div>
-    <div class="drawing"><span v-if="drawing">Drawing...</span></div>
-    <canvas ref="canvas"
-            tabindex="0"
-            :width="value.width"
-            :height="value.height">
-    </canvas>
-  </div>
+  <canvas tabindex="0"
+          :width="value.width"
+          :height="value.height">
+  </canvas>
 </template>
 
 <script>
@@ -15,7 +11,6 @@
 
   export default {
     props: ['value'],
-    data: () => ({ drawing: false }),
     methods: {
       changeValue (cb) {
         const target = this.$props.value
@@ -26,13 +21,13 @@
         this.$emit('input', newValue)
       },
       draw () {
-        this.drawing = true
+        this.$emit('progress', true)
         interactions.unbind()
         setTimeout(() => {
-          canvas.draw(this.$refs.canvas, this.$props.value)
+          canvas.draw(this.$el, this.$props.value)
           setTimeout(() => {
             interactions.bind()
-            this.drawing = false
+            this.$emit('progress', false)
           }, 0)
         }, 0)
       }
@@ -43,7 +38,7 @@
       }
     },
     mounted () {
-      interactions.setup(this.$refs.canvas, {
+      interactions.setup(this.$el, {
         move: (dx, dy) => {
           this.changeValue(({ x, y, zoom: z }) => ({ x: x - dx / z, y: y + dy / z }))
         },
@@ -63,8 +58,6 @@
   canvas {
     display: block;
     border: 1px solid #ddd;
-  }
-  .drawing {
-    height: 40px;
+    cursor: pointer;
   }
 </style>
