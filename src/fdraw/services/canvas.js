@@ -1,6 +1,10 @@
-import mapPoint from './mapPoint'
 import iterations from './iterations'
 import getColor from './getColor'
+
+const mapPoint = (srcX, srcY, trgParams) => ({
+  x: trgParams.x + srcX / trgParams.zoom,
+  y: trgParams.y - srcY / trgParams.zoom
+})
 
 const draw = (el, params) => {
   const context = el.getContext('2d')
@@ -15,7 +19,7 @@ const draw = (el, params) => {
   for (let j = 0; j < height; j++) {
     for (let i = 0; i < width; i++) {
       const ii = 4 * (j * width + i)
-      const cPoint = mapPoint.map(i - halfWidth, j - halfHeight, params)
+      const cPoint = mapPoint(i - halfWidth, j - halfHeight, params)
       const nIter = iterations.mandelbrot(cPoint, maxIter)
       const c = getColor.wb(nIter / maxIter)
       imgData.data[ii + 0] = c.r
