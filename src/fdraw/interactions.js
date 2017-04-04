@@ -34,6 +34,12 @@ class Interactions {
     this.elem.removeEventListener('mouseup', this.onMouseUp)
     this.elem.removeEventListener('keydown', this.onKeyDown)
   }
+
+  static create (elem, actions) {
+    const instance = new Interactions()
+    instance.setup(elem, actions)
+    return instance
+  }
 }
 
-export default new Interactions()
+export default Interactions

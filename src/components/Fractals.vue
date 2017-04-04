@@ -1,5 +1,12 @@
 <template>
   <div class="container">
+    <fdraw></fdraw>
+    &nbsp;
+    <fdraw :value="{  x: -0.7711577, y: 0.115324358, zoom: 3787675 }"></fdraw>
+    &nbsp;
+    <fdraw :value="{  x: -1.2524027, y: 0.0216157, zoom: 18892487677 }"></fdraw>
+    <br/>
+    <br/>
     <div class="row">
       <div class="col-sm-2">
         <input :value="params.width" @input="pushToImmutable('width', $event)" class="form-control">
@@ -11,14 +18,17 @@
         {{ params }}
       </div>
     </div>
+    <button class="btn btn-default" @click="zoom(true)">Zoom in</button>
+    <button class="btn btn-default" @click="zoom(false)">Zoom out</button>
     <div class="drawing">{{ drawing }}</div>
     <fdraw v-model="params" @progress="progress"></fdraw>
+    <br/>
     <br/>
   </div>
 </template>
 
 <script>
-  import Fdraw from '@/fdraw/components'
+  import Fdraw from '@/fdraw'
 
   export default {
     components: { Fdraw },
@@ -38,6 +48,10 @@
         if (!isNaN(n) && n > 0) {
           this.params = { ...this.params, [key]: n }
         }
+      },
+      zoom (dir) {
+        const zoom = dir ? this.params.zoom * 1.5 : this.params.zoom / 1.5
+        this.params = { ...this.params, zoom }
       },
       progress (event) {
         this.drawing = event ? 'Drawing...' : ''
