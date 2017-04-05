@@ -1,10 +1,10 @@
 <template>
   <div class="container">
-    <fdraw></fdraw>
+    <fdraw-r></fdraw-r>
     &nbsp;
-    <fdraw :value="{  x: -0.7711577, y: 0.115324358, zoom: 3787675 }"></fdraw>
+    <fdraw-r :value="{  x: -0.7711577, y: 0.115324358, zoom: 3787675 }"></fdraw-r>
     &nbsp;
-    <fdraw :value="{  x: -1.2524027, y: 0.0216157, zoom: 18892487677 }"></fdraw>
+    <fdraw-r :value="{  x: -1.2524027, y: 0.0216157, zoom: 18892487677 }"></fdraw-r>
     <br/>
     <br/>
     <div class="row">
@@ -21,17 +21,18 @@
     <button class="btn btn-default" @click="zoom(true)">Zoom in</button>
     <button class="btn btn-default" @click="zoom(false)">Zoom out</button>
     <div class="drawing">{{ drawing }}</div>
-    <fdraw v-model="params" @progress="progress"></fdraw>
+    <fdraw-rw v-model="params" @progress="progress"></fdraw-rw>
     <br/>
     <br/>
   </div>
 </template>
 
 <script>
-  import Fdraw from '@/fdraw'
+  import FdrawR from '@/fdraw/components/FdrawR'
+  import FdrawRw from '@/fdraw/components/FdrawRw'
 
   export default {
-    components: { Fdraw },
+    components: { FdrawR, FdrawRw },
     data: () => ({
       params: {
         width: 340,
