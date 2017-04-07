@@ -31,11 +31,11 @@
     components: { FdrawR, FdrawRw },
     data: () => ({
       params: {
-        width: 340,
+        width: 930,
         height: 340,
-        x: -0.5,
-        y: 0,
-        zoom: 150
+        x: -1.0750411772749,
+        y: 0.23929300335374,
+        zoom: 145610960
       },
       drawing: ''
     }),
@@ -62,12 +62,12 @@
     margin-top: 16px;
     margin-bottom: 12px;
     width: 240px;
-    height: 72px;
+    height: 80px;
     background-color: #f8f8f8;
-    border-color: #eee;
-    border-width: 1px;
-    border-style: solid;
-    box-shadow: 2px 2px 1px #eee
+    border: 1px solid #C2C2C2;
+    box-shadow: 1px 1px 4px #EBEBEB;
+    border-radius: 3px;
+    padding: 2px;
   }
   .fpanel > input {
     margin: 2px;
@@ -75,9 +75,8 @@
     font-size: 8pt;
     outline: none;
     padding: 2px;
-    border-color: #eee;
+    border: solid 2px #eee;
     border-radius: 8px;
-    border-style: solid;
     text-align: center;
   }
   .fpanel > a {
@@ -91,10 +90,8 @@
     display: inline-block;
     text-align: center;
     font-size: 8pt;
-    border-color: #eee;
+    border: solid 2px #eee;
     border-radius: 10px;
-    border-style: solid;
-    border-width: 2px;
   }
   .fpanel > a:hover {
     background-color: #eee

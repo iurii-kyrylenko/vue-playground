@@ -1,5 +1,6 @@
 <template>
-  <canvas tabindex="0"
+  <canvas class="fcanvas"
+          tabindex="-1"
           :width="state.width"
           :height="state.height">
   </canvas>
@@ -28,9 +29,6 @@
   }
 </script>
 
-<style scoped>
-  canvas {
-    border: 1px solid #ddd;
-    cursor: pointer;
-  }
+<style>
+  @import './styles.css'
 </style>

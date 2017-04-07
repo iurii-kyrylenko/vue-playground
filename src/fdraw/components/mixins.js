@@ -1,5 +1,5 @@
-import canvas from '../canvas'
-import Interactions from '../interactions'
+import canvas from '../services/canvas'
+import Interactions from '../services/interactions'
 
 export default {
   props: ['value'],
