@@ -13,8 +13,10 @@
           </ul>
 
           <dropdown-menu v-once :content="menu1"></dropdown-menu>
+
           <ul class="nav navbar-nav">
             <router-link tag="li" active-class="active" to="/fractals"><a>Fractals</a></router-link>
+            <router-link tag="li" active-class="active" to="/worker"><a>Web worker</a></router-link>
           </ul>
 
         </div>

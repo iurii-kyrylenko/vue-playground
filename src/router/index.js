@@ -3,7 +3,8 @@ import Router from 'vue-router'
 import Hello from '@/components/Hello'
 import Bootstrap from '@/components/Bootstrap'
 import FormValidation from '@/components/FormValidation'
-import Fractals from '@/components/fractals'
+import Fractals from '@/components/Fractals'
+import MyWorker from '@/components/MyWorker'
 
 Vue.use(Router)
 
@@ -42,6 +43,11 @@ export default new Router({
       path: '/fractals',
       name: 'Fractals',
       component: Fractals
+    },
+    {
+      path: '/worker',
+      name: 'MyWorker',
+      component: MyWorker
     }
   ]
 })
