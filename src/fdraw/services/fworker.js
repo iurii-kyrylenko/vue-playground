@@ -6,7 +6,7 @@ const mapPoint = (srcX, srcY, trgParams) => ({
   y: trgParams.y - srcY / trgParams.zoom
 })
 
-onmessage = (e) => {
+self.onmessage = (e) => {
   const params = e.data.params
   const imageData = e.data.image
 
@@ -21,7 +21,7 @@ onmessage = (e) => {
       const ii = 4 * (j * width + i)
       const cPoint = mapPoint(i - halfWidth, j - halfHeight, params)
       const nIter = iterations.mandelbrot(cPoint, maxIter)
-      const c = getColor.wb(nIter / maxIter)
+      const c = getColor.wiki(nIter / maxIter)
       imageData.data[ii + 0] = c.r
       imageData.data[ii + 1] = c.g
       imageData.data[ii + 2] = c.b
