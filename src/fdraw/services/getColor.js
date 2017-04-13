@@ -21,6 +21,9 @@ const wb = (h) => {
   }
 }
 
+/*
+ * Quantization
+ */
 const getSegment = (h, bp) => {
   const len = bp.length
   if (h === 1) return [bp[len - 2], bp[len - 1]]
@@ -30,11 +33,17 @@ const getSegment = (h, bp) => {
   return [bp[i], bp[j]]
 }
 
+/*
+ * Linear interpolation
+ */
 const li = (x, x1, x2, y1, y2) => {
   const r = y1 + (x - x1) * (y2 - y1) / (x2 - x1)
   return Math.round(r)
 }
 
+/*
+ * Color gradient with linear interpolation
+ */
 const lg = (h, bp) => {
   const [p1, p2] = getSegment(h, bp)
   return {

@@ -1,19 +1,27 @@
 class Interactions {
+  constructor () {
+    this.onMouseDown = this.onMouseDown.bind(this)
+    this.onMouseUp = this.onMouseUp.bind(this)
+    this.onKeyDown = this.onKeyDown.bind(this)
+    this.onTouchStart = this.onTouchStart.bind(this)
+    this.onTouchEnd = this.onTouchEnd.bind(this)
+  }
+
   setup (elem, actions) {
     this.elem = elem
     this.actions = actions
   }
 
-  onMouseDown = (event) => {
+  onMouseDown (event) {
     this.cStart = { x: event.clientX, y: event.clientY }
   }
 
-  onMouseUp = (event) => {
+  onMouseUp (event) {
     const cEnd = { x: event.clientX, y: event.clientY }
     this.actions.move(cEnd.x - this.cStart.x, cEnd.y - this.cStart.y)
   }
 
-  onKeyDown = (event) => {
+  onKeyDown (event) {
     switch (event.keyCode) {
       case 107: case 187: this.actions.zoomIn(); break
       case 109: case 189: this.actions.zoomOut(); break
@@ -21,7 +29,7 @@ class Interactions {
     }
   }
 
-  onTouchStart = (event) => {
+  onTouchStart (event) {
     event.preventDefault()
     const pts = event.targetTouches.length
     if (pts === 1) {
@@ -39,7 +47,7 @@ class Interactions {
     }
   }
 
-  onTouchEnd = (event) => {
+  onTouchEnd (event) {
     event.preventDefault()
 
     if (this.state === 1) {
