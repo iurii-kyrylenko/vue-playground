@@ -39,8 +39,8 @@
     props: ['content'],
     computed: {
       isGroupActive () {
-        return this.$props.content.reduce((a, { path }) =>
-          a || (this.$route.path.indexOf(path) !== -1), false)
+        return this.$props.content.some(({ path }) =>
+          this.$route.path.includes(path))
       }
     },
     data: () => ({ isVisible: false })
